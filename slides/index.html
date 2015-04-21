@@ -1,0 +1,1079 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>HTML5 video captions and subtitles</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Adding captions and subtitles</h1>
+		<p>Working with HTML5 Video</p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>Adding captions and subtitles</h2>
+		<p>Working with HTML5 Video</p>
+		<img src="pictures/cover.jpg" alt="">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#Cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#Cover p a {
+					color:#FFF;
+					}
+		</style>
+	</div></section>
+
+    <section class="slide"><div>
+
+      <ol>
+        <li>A basic HTML5 video</li>
+        <li>Adding subtitles</li>
+        <li>WebVTT syntax basics</li>
+        <li>Building a custom menu with JavaScript</li>
+        <li>Captions versus subtitles</li>
+        <li>Cue settings</li>
+        <li>Styling text cues</li>
+        <li>Tags available to cues</li>
+      </ol>
+
+    </div></section>
+
+    <section class="slide cover"><div>
+		<h2>A basic HTML5 video</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>A solid basis to start from</h2>
+		<ul>
+		  <li>Multiple <code>source</code> tags for cross browser support</li>
+		  <li>include default controls</li>
+		  <li>Include a fallback direct link to the video, for non-supporting browsers</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>HTML5 video example</h2>
+        <pre>
+		  <code>&lt;video controls preload="metadata"&gt;</code>
+		    <code>  &lt;source src="../video/sintel-short.mp4" type="video/mp4"&gt;</code>
+		    <code>  &lt;source src="../video/sintel-short.webm" type="video/webm"&gt;</code>
+
+		    <code>  &lt;p&gt;It appears that your browser doesn't support HTML5 video.</code>
+		    <code>  Here's a &lt;a href="../video/sintel-short.mp4"&gt;direct link to</code>
+		    <code>  the video instead&lt;/a&gt;.&lt;/p&gt;</code>
+		  <code>&lt;/video&gt;</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<h2>Adding subtitles</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			.cover h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2><code>&lt;track&gt;</code> elements</h2>
+        <pre>
+		  <code>&lt;track label="English" kind="subtitles" srclang="en"</code>
+		  <code>  src="vtt/sintel-subtitles-en.vtt" default&gt;</code>
+          <code>&lt;track label="Deutsch" kind="subtitles" srclang="de"</code>
+          <code>  src="vtt/sintel-subtitles-de.vtt"&gt;</code>
+          <code>&lt;track label="Español" kind="subtitles" srclang="es"</code>
+          <code>  src="vtt/sintel-subtitles-es.vtt"&gt;</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2><code>&lt;track&gt;</code> attributes</h2>
+		
+        <ul>
+          <li><code>default</code>: Sets the default text track to display (only one element per video can have this), which can be overridden by JavaScript or user preferences.</li>
+          <li><code>kind</code>: Indicates what kind of text track each track is. Here we only have subtitles, but you can also have captions, descriptions and others.</li>
+          <li><code>label</code>: A user-readable title for the text track, which is displayed by the browser when listing available text tracks.</li>
+          <li><code>src</code>: The URL of the text track file.</li>
+          <li><code>srclang</code>: A language code indicating to the browser what language the text tracks are written in.</li>
+        </ul>
+        <style>
+			ul {
+				font-size: 80%;
+				}
+		</style>
+
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Cross browser UX not very good for track</h2>
+		
+        <ul>  
+          <li>IE11: provides menu for selecting required language. Defaults to "default" track, otherwise shows none by default.</li>
+          <li>Firefox: loads first text track it has "default", otherwise it shows nothing. Doesn't provide a menu to switch tracks.</li>
+          <li>Chrome and Opera: Load the captions set that matches the browser language, then the "default", then nothing. Doesn't provide a menu to switch tracks.
+          <li>Safari: does a good job, similar to IE.</li>
+
+        </ul>
+        
+
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>You should therefore...</h2>
+		
+        <p>Implement a custom UI for <code>&lt;track&gt;</code> elements using JavaScript!</p>
+        
+
+	</div></section>
+
+    <section class="slide cover"><div>
+		<h2>WebVTT syntax basics</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			.cover h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>WebVTT looks like so</h2>
+        <pre>
+		  <code>WEBVTT</code>
+		  <code>&nbsp;</code>
+          <code>0</code>
+          <code>00:00:00.000 --> 00:00:12.000</code>
+          <code>[Test]</code>
+          <code>&nbsp;</code>
+          <code>1</code>
+          <code>00:00:18.700 --> 00:00:21.500</code>
+          <code>This blade has a dark past.</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>WebVTT syntax explanation</h2>
+		
+        <ul>  
+          <li>File must start with WEBVTT.</li>
+          <li>Next include separate text track blocks, each starting with a number. The numbers must go up in order.</li>
+          <li>Second line of each block is a timestamp range = what time the text track should shown, and disappear again.
+          <li>Time format is hh:mm:ss:msmsms, allowing for very precise times.</li>
+          <li>The third line onwards (you can include multiple lines) is the text you want to display.</li>
+
+        </ul>
+        
+
+	</div></section>
+
+	<section class="slide cover"><div>
+		<h2>Implementing a custom subtitle menu</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>You can use whatever UI you want</h2>
+		<p>We are using a select menu</p>
+        <pre>
+		  <code>&lt;form&gt;</code>
+		  <code>  &lt;select name="select"&gt;</code>
+		  <code>&nbsp;</code>
+		  <code>  &lt;/select&gt;</code>
+	      <code>&lt;/form&gt;</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Basic WebVTT API information</h2>
+		
+        <ul>  
+          <li>All the text tracks can be acced through <code>video.textTracks</code>.</li>
+          <li>Each text track has properties to access the features you set earlier in its attributes.</li>
+          <li>For example <code>textTrack.label</code>, <code>textTrack.kind</code>, or <code>textTrack.language</code>.</li>
+          <li>Show or hide a text track using <code>textTrack.mode = showing</code> or <code>hidden</code>.</li>
+        </ul>
+        
+
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Set variables then hide all tracks</h2>
+		
+        <pre>
+		  <code>var video = document.querySelector('video');</code>
+          <code>var select = document.querySelector('select');</code>
+          <code>function hideTracks() {</code>
+          <code>  for (var i = 0; i < video.textTracks.length; i++) {</code>
+          <code>    video.textTracks[i].mode = 'hidden';</code>
+          <code>  }</code>
+          <code>}</code>
+          <code>&nbsp;</code>
+          <code>hideTracks();</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Build the select menu</h2>
+		
+        <pre>
+		  <code>var tracksOff = document.createElement('option');</code>
+          <code>tracksOff.setAttribute('value','off');</code>
+          <code>tracksOff.textContent = 'Tracks off';</code>
+          <code>select.appendChild(tracksOff);</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Build the select menu</h2>
+		
+        <pre>
+          <code>for (var i = 0; i < video.textTracks.length; i++) {</code>
+          <code>  var curTrack = video.textTracks[i];</code>
+          <code>  var addTrackOpt = document.createElement('option');</code>
+          <code>  addTrackOpt.setAttribute('value',curTrack.kind + '-' + curTrack.language);</code>
+          <code>  addTrackOpt.textContent = curTrack.label + ' ' + curTrack.kind;</code>
+          <code>  select.appendChild(addTrackOpt);</code>
+          <code>}
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide image"><div>
+		<h2>The select menu</h2>
+		<img src="pictures/select.png" alt="">
+		  <style>
+			.image {
+			   background-color: white;
+			}
+
+			.image img {
+			  width: 300px;
+		      display: block;
+		      margin: 50px auto;
+			}
+		</style>
+		
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Add an event listener</h2>
+		<p>This runs the <code>trackChange()</code> function whenever the a new select value is selected</p>
+        <pre>
+          <code>select.addEventListener('change',function() {</code>
+          <code>  trackChange(select.value);</code>
+          <code>});</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>The <code>trackChange()</code> function</h2>
+		
+        <pre>
+          <code>function trackChange(value) {</code>
+          <code>  if(value === 'off') {</code>
+          <code>    hideTracks();</code>
+          <code>  } else {</code>
+          <code>    hideTracks();</code>
+          <code>    var splitValue = value.split('-');</code>
+    
+          <code>    for (var i = 0; i < video.textTracks.length; i++) {</code>
+          <code>      if(video.textTracks[i].kind === splitValue[0]) {</code>
+          <code>        if(video.textTracks[i].language === splitValue[1]) {</code>
+          <code>          video.textTracks[i].mode = 'showing';</code>
+          <code>        }</code>
+          <code>      }</code>
+          <code>    }</code>
+          <code>  }</code>
+          <code>}</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>How <code>trackChange()</code> works</h2>
+		<ul>
+		  <li>If 'off' value selected, hide all tracks.</li>
+		  <li>If another value selected, hide all tracks, then...</li>
+		  <li>split the select value into track <code>kind</code> and <code>language</code>.</li>
+		  <li>Loop through the video text tracks to find the one that has that <code>kind</code> and <code>language</code>.</li>
+		  <li>Show the text track that matches.</li>
+		</ul>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<h2>Subtitles versus captions</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Subtitles versus captions</h2>
+		<ul>
+		  <li>Subtitles are for people who can hear the audio dialog, but can't understand the language.</li>
+		  <li>They only include the words that are being spoken and are not positioned.</li>
+		  <li>Captions are for people who are deaf or hard of hearing.</li>
+		  <li>They include information on who is speaking, with positioning.
+		  <li>they also include information to describe music ambient sound effects.</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Caption <code>&lt;track&gt;</code> example</h2>
+		
+        <pre>
+          <code>&lt;track label="English" kind="captions" srclang="en"</code>
+          <code>  src="vtt/sintel-captions-en.vtt"&gt;</code>
+          
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide cover"><div>
+		<h2>Cue settings, tags and styling captions</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>WebVTT gets more complex</h2>
+		
+        <pre>
+          <code>1</code>
+          <code>00:00:18.700 --> 00:00:21.500 line:20% align:end</code>
+          <code>&lt;c.man&gt;&lt;b&gt;Man&lt;/b&gt;: This blade has a dark past.  &lt;/c&gt;</code>
+		</pre>
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Cue settings</h2>
+		<ul>
+		  <li><code>vertical</code>: Specifies vertical text, not horizontal.</li>
+		  <li><code>line</code>: Specifies the line the text appears on.</li>
+		  <li><code>position</code>: Specifies the position the text will appear at along the line.</li>
+		  <li><code>size</code>: Specifies the size (width) of the text.</li>
+		  <li><code>align</code>: Specifies the text alignment</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Styling captions</h2>
+
+		<p>Caption text cues have some special tags marking them up, stylable via CSS Extensions.</p>
+		
+        <pre>
+          <code>&lt;c.man&gt;&lt;b&gt;Man&lt;/b&gt;: This blade has a dark past.  &lt;/c&gt;</code>
+		</pre>
+
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Styling captions</h2>
+
+        <p><code>::cue</code> pseudo-element = the key to targetting text track cues for styling.</p>
+
+        <pre>
+          <code>video::cue { whitespace: pre; }</code>
+          <code>video::cue(.man) { color:yellow }</code>
+		</pre>
+
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>What properties can be applied to text cues?</h2>
+
+        <p>Only a small amount:</p>
+
+        <ul>
+          <li><code>color</code></li>
+          <li><code>opacity</code></li>
+          <li><code>visibility</code></li>
+          <li><code>text-decoration</code></li>
+          <li><code>text-shadow</code></li>
+          <li><code>background</code> shorthand properties</li>
+          <li><code>outline</code> shorthand properties</li>
+          <li><code>font</code> shorthand properties, and <code>line-height</code></li>
+          <li><code>whitespace</code></li>
+		</ul>
+
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Available text cue tags</h2>
+
+        <ul>
+          <li>Timestamp, e.g. <code>moon &lt;00:17.500&gt;hits your eye</code></li>
+          <li>Class tag, e.g. <code>&lt;c.classname&gt;text&lt;/c&gt;</code></li>
+          <li>Italics tag, e.g. <code>&lt;i&gt;text&lt;/i&gt;</code></li>
+          <li>Bold tag, e.g. <code>&lt;b&gt;text&lt;/b&gt;</code></li>
+          <li>Underline tag, e.g. <code>&lt;u&gt;text&lt;/u&gt;</code></li>
+          <li>Ruby/Ruby text tags, e.g. <code>&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</code></li>
+          <li>Voice tag, e.g. <code>&lt;v bob&gt;text&lt;/v&gt;</code></li>
+		</ul>
+
+		  <style>
+			pre {
+				font-size: 80%;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Finish!</h2>
+		<p>Further resources</p>
+		<ul>
+		  <li><a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video">Adding captions and subtitles to HTML5 video</a> (MDN)</li>
+		  <li><a href="http://www.html5rocks.com/en/tutorials/track/basics/">Getting Started With the Track Element</a> (HTML5 Rocks)</li>
+		  <li><a href="">Working with HTML5 Video: Adding captions and subtitles</a> content kit homepage</li>
+		</ul>
+	</div></section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section class="slide"><div>
+		<h2>How the Web works</h2>
+		<ol>
+		  <li>Browser (client) requests web page</li>
+		  <li>Request sent to server</li>
+		  <li>Server sends code to browser</li>
+		  <li>Browser turns code into web pages/apps</li>
+		</ol>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Server-side vs client-side</h2>
+		<ul>
+		  <li><strong>Server-side code</strong>: runs on server, then result is sent to client</li>
+		  <li><strong>Client-side code</strong>: code sent to client, and runs on client</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>HTML</h2>
+		<ul>
+		  <li>Elements: e.g. <code>&lt;h1&gt;Example heading&lt;/h1&gt;</code></li>
+		  <li>Content structure and meaning</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>CSS</h2>
+		<ul>
+		  <li>Rules: e.g. <code>h1 { color: red; }</code></li>
+		  <li>Styling content</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>JavaScript</h2>
+		<ul>
+		  <li>Objects: e.g. <code>console.log('JavaScript test!');</code></li>
+		  <li>Programming for the Web</li>
+		  <li>Dynamic functionality</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Browser developer tools</h2>
+		<ul>
+		  <li>Debugging and testing</li>
+		  <li><em>Ctrl + Shift + I</em> (<em>Cmd + Opt + I</em> on Mac OSX, <em>F12</em> on Internet Explorer)</li>
+		  <li>Run JavaScript in console</li>
+		</ul>
+	</div></section>
+
+
+
+
+    <section class="slide cover" id="Picture2"><div>
+		<h2>Variables</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			#Picture2 h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Variables</h2>
+
+		<p>Run these in the browser console</p>
+		<ul>
+		  <li>Containers for values</li>
+		  <li>Test — <code>myVariable</code> (undefined)</li>
+		  <li>Create — <code>var myVariable = 'Chris'</code></li>
+		  <li>Update — <code>myVariable = 'Bob'</code></li>
+		  <li>Test again — <code>myVariable</code> ('Bob')</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Common variable data types</h2>
+		<ul>
+		  <li>Integer, no quotes, e.g. <code>25</code></li>
+		  <li>String, in quotes, e.g. <code>"Chris"</code>. <code>"25"</code> is still a string</li>
+		  <li>Boolean — <code>true</code> or <code>false</code></li>
+		  <li>Array/Object — anything else</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Syntax rules</h2>
+		<ul>
+		  <li><code>var</code> to declare variable</li>
+		  <li>Variable naming rules: no space, punctuation or reserved words/characters</li>
+		  <li>JavaScript is case sensitive: <code>myVariable</code> is not <code>myvariable</code></li>
+		  <li>Lines end with a semi-colon (<code>;</code>)</li>
+		  <li>Code block: <code>{ ... }</code></li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Operators</h2>
+		<ul>
+		  <li><code>+</code> — addition/concatenation</li>
+		  <li><code>-</code> — subtraction</li>
+		  <li><code>/</code> — division</li>
+          <li><code>*</code> — multiplication</li>
+          <li><code>%</code> — modulo</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Operators</h2>
+		<ul>
+          <li><code>=</code> — assignment</li>
+		  <li><code>===</code> — strict equality/identity</li>
+		  <li><code>||</code> — logical OR</li>
+		  <li><code>&&</code> — logical AND</li>
+		  <li><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>=&gt;</code> — less than, greater than, less than or equal to, greater than or equal to</li>
+		  <li><code>!, !==</code> — logical NOT, not equal to</li>
+		</ul>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>Operator precedence</h2>
+		<ul>
+          <li><code>8 + 4 / 3 * 4</code> = 13.33333333333</li>
+          <li>Division/multiplication, then addition/subtraction</li>
+          <li>Source order if precedence is the same</li>
+          <li>Force order using brackets</li>
+          <li><code>(8 + 4) / (3 * 4)</code> = 1</li>
+		</ul>
+	</div></section>
+
+
+
+
+	<section class="slide cover" id="Picture3"><div>
+		<h2>Conditions & loops</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			#Picture3 h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Conditional code</h2>
+		<ul>
+          <li>Allows different code to run depending on a condition</li>
+          <li>If expression is true, run code 1, else run code 2</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>if ... else pseudocode</h2>
+		<pre>
+			<code>if(condition === true) {</code>
+			<code>  // run expression 1</code>
+			<code>} else {</code>
+			<code>  // run expression 2</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>if ... else example</h2>
+		<pre>
+			<code>var myTown = prompt('Enter your home town or city');</code>
+			<code>if(myTown === 'Manchester') {</code>
+			<code>  alert('Is it still raining in Manchester?');</code>
+			<code>} else {</code>
+			<code>  alert('I don\'t know your home town very well');</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>if ... else if ... else example</h2>
+		<pre>
+			<code>if(myTown === 'Manchester') {</code>
+			<code>  alert('Is it still raining in Manchester?');</code>
+			<code>} else if(myTown === 'Barcelona') {</code>
+			<code>  alert("You have beautiful architecture, and sun");</code>
+			<code>} else {</code>
+			<code>  alert('I don\'t know your home town very well');</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>logical OR and AND</h2>
+		<pre>
+			<code>if(myTown === "Manchester" || myTown === "Bradford") {</code>
+			<code>  alert("It is rainy in those Northern towns.");</code>
+			<code>}</code>
+			<code>&nbsp;</code>
+			<code>if(myTown === "Manchester" && mySeason === "Summer") {</code>
+			<code>  alert("Manchester must be enjoying some warmer weather.");</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Nesting if ... else</h2>
+		<pre>
+			<code>if(condition1 === true) {</code>
+			<code>  if(condition2 === true) {</code>
+			<code>    // run expression 1 {</code>
+			<code>  }</code>
+			<code>} else {</code>
+			<code>  // run expression 2</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>Loops</h2>
+		<ul>
+          <li>Run the same code several times</li>
+          <li>With updated variables each time</li>
+          <li>for loops are the most common</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>For loop pseudocode</h2>
+		
+		<pre>
+			<code>for(i = <em>starting value</em>; <em>exit-condition</em> ; <em>iterator</em>) {</code>
+			<code>  // run code</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>For loop features</h2>
+		<ul>
+          <li><code>i</code> — variable</li>
+          <li><em>starting value</em> — what <code>i</code> begins at</li>
+          <li><em>exit-condition</em> — what value <code>i</code> has to be for the loop to keep running</li>
+          <li><em>iterator</em> — how <code>i</code> changes each time the loop is run</li>
+          <li><em>Run code</em> — the code run each time the loop runs</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>For loop example</h2>
+		
+		<pre>
+			<code>for(i = 0; i <= 20; i++) {</code>
+			<code>  console.log(i);</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+
+
+
+
+	<section class="slide cover" id="Picture4"><div>
+		<h2>Document Object Model</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			#Picture4 h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide cover" id="Picture5"><div>
+		<h2>The browser converts HTML to a DOM tree</h2>
+		<img src="pictures/dom.jpg" alt="">
+		<style>
+			#Picture5 h2 {
+				color:#000;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>JavaScript and CSS accessing the DOM</h2>
+		<ol>
+          <li>JS/CSS "walk" up and down the tree</li>
+          <li>Find elements they are interested in</li>
+          <li>Do stuff to those elements</li>
+		</ol>
+
+		<p>This is how many useful things are done on a web page</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Example: JavaScript updating element contents</h2>
+		
+	    <p><code>&lt;h1 class="myHeading"&gt;My heading&lt;/h1&gt;</code></p>
+		
+		<pre>
+			<code>var myH1 = document.querySelector('.myHeading');</code>
+			<code>myH1.innerHTML = "My updated heading";</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover" id="Picture6"><div>
+		<h2>Canvas</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			#Picture6 h2 {
+				color:#FFF;
+				}
+
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2><code>&lt;canvas&gt;</code> is</h2>
+		<ol>
+          <li>A scriptable HTML element</li>
+          <li>Create images using JavaScript</li>
+          <li>Can then animate them, etc.</li>
+		</ol>
+
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Create a canvas + get a context</h2>
+		
+	    <p><code>&lt;canvas width="500" height="500"&gt;
+&lt;/canvas&gt;</code></p>
+		
+		<pre>
+			<code>var myCanvas = document.querySelector('canvas');</code>
+			<code>var myContext = myCanvas.getContext('2d');</code>
+		</pre>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>Draw squares</h2>
+		
+		<pre>
+			<code>myContext.fillStyle = 'rgba(0,0,255,0.5)';</code>
+			<code>myContext.fillRect(0,0,200,200);</code>
+			<code>&nbsp;</code>
+			<code>myContext.strokeStyle = 'rgba(0,255,0,0.5)';</code>
+			<code>myContext.lineWidth = 1;</code>
+			<code>myContext.strokeRect(200,200,50,50);</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Canvas loops</h2>
+		
+		<pre>
+			<code>myContext.fillStyle = 'rgba(0,0,255,0.15)';</code>
+			<code>for(i = 0; i <= 50; i++) {</code>
+			<code>  myContext.fillRect(i,i,25+i,25+i);</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>More loop ideas</h2>
+		
+		<ul>
+          <li>Bigger each time — <code>myContext.fillRect((i*6),(i*4),25+(i*10),25+(i*10));</code></li>
+          <li>Bigger loop iterator — <code>i+=5</code></li>
+          <li>Vary colours — <code>myContext.fillStyle = 'rgba(0,0,' + (150+(i*6)) + ',0.15)';</code></li>
+          <li>Random values — <code>Math.floor(Math.random()*200)</code></li>
+          <li>Rotate each time — <code>myContext.rotate(0.025);</code></li>
+		<ul>
+	</div></section>
+
+	<section class="slide" id="CodeSmall1"><div>
+		<h2>More loop ideas</h2>
+		
+		<ul>
+          <li>Sine wave — <code>myContext.fillRect((i*5),(250+(Math.sin(i/6))*50),10,10);</code></li>
+          <li>Circles:</li>
+		<ul>
+
+		<pre>
+          <code>myContext.beginPath();</code>
+          <code>myContext.arc((i*5),(250+(Math.sin(i/6))*50),10,0,Math.PI*2,true);</code>
+          <code>myContext.fill();</code>
+        </pre>
+        <style>
+			#CodeSmall1 pre {
+				font-size: 0.75em;
+		</style>
+	</div></section>
+
+
+
+	<section class="slide cover" id="Picture7"><div>
+		<h2>Functions</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			#Picture7 h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Functions are...</h2>
+		
+		<ul>
+          <li>...reusable blocks of code</li>
+          <li>Write once, call multiple times</li>
+          <li>JavaScript has many built-in functions</li>
+          <li>You can also write your own</li>
+		<ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Sample function</h2>
+
+		<pre>
+          <code>function random10() {</code>
+          <code>  var randomNumber = Math.floor(Math.random() * 10) + 1;</code>
+          <code>  return randomNumber;</code>
+          <code>}</code>
+          <code>&nbsp;</code>
+          <code>random10(); // call function</code>
+        </pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Function with argument</h2>
+
+		<pre>
+          <code>function random(input) {</code>
+          <code>  var randomResult = Math.floor(Math.random() * input) + 1;</code>
+          <code>  return randomResult;</code>
+          <code>}</code>
+          <code>&nbsp;</code>
+          <code>random(250); // call function</code>
+        </pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Canvas function</h2>
+
+		<pre>
+          <code>function sineWave(number,y) {</code>
+          <code>  for(i=0;i<=number;i++) {</code>
+          <code>    myContext.fillStyle = 'rgba(0,0,'</code>
+          <code>     + (Math.floor(Math.random()*200)) + ',0.5)';</code>
+          <code>    myContext.fillRect((i*5),(y+(Math.sin(i/6))*50),10,10);</code>
+          <code>  }</code>
+          <code>}</code>
+        </pre>
+	</div></section>
+
+
+
+
+
+	
+
+	<section class="slide cover" id="Picture8"><div>
+		<h2>Events</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			#Picture8 h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>Events are...</h2>
+		
+		<ul>
+          <li>...how JavaScript responds to user interactions</li>
+          <li>Such as clicking a button</li>
+          <li>Or moving the mouse pointer</li>
+          <li>Event listeners listen out for things happening</li>
+		<ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Sample event usage (anonymous function)</h2>
+
+		<p><code>&lt;button class="welcome"&gt;Click me!&lt;/button&gt;</code></p>
+
+		<pre>
+          <code>var button = document.querySelector('.welcome');</code>
+          <code>&nbsp;</code>
+          <code>button.onclick = function() {</code>
+          <code>  alert("Ouch, that hurt!");</code>
+          <code>}</code>
+        </pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Sample event usage (named function)</h2>
+
+		<pre>
+          <code>var button = document.querySelector('.welcome');</code>
+          <code>&nbsp;</code>
+          <code>function clicky() {</code>
+          <code>  alert("Ouch, that hurt!");</code>
+          <code>}</code>
+          <code>&nbsp;</code>
+          <code>button.onclick = clicky;</code>
+        </pre>
+	</div></section>
+
+
+
+
+	
+
+	<section class="slide"><div>
+		<h2>Credits</h2>
+
+		<ul>
+          <li><a href="https://www.flickr.com/photos/trinity-of-one/20562069/">"Matrix" cover pic</a> by <a href="https://www.flickr.com/photos/trinity-of-one/">David Asch</a></li>
+		</ul>
+		
+	</div></section>
+
+	<p class="badge"><a href="https://github.com/mdn/topic-kits/tree/master/beginners-programming">Fork me on Github</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

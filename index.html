@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Working with HTML5 Video: Adding captions and subtitles</title>
+  <link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Working with HTML5 video: Adding captions and subtitles</h1>
+
+<p>In this content kit we'll look at adding captions and subtitles (and other text track types) to HTML5 <code>&lt;video&gt;<code> using the <code>&lt;track&gt;</code> element, and look at support possibilities in legacy browsers.</p>
+
+<p>
+Technology level: HTML5 <code>&lt;video&gt;<code> is well-supported across modern browsers (going back to Internet Explorer 9); <code>&lt;track&gt;<code> is also fairly well supported (all modern browsers, going back to Internet Explorer 10).
+</p>
+
+<p>
+Please submit any issues you find against <a href="">LinkToGithubRepoHere</a>.
+</p>
+
+<h3>Versioning information</h3>
+
+<p>Content kit v0.9: last significant update 13th April 2015. This content kit is published under the Mozilla Public License, version 2.0.</p>
+
+<h2>Prerequisites for the presenter</h2>
+
+
+<ul>
+    <li>A Linux, Windows or Mac OSX computer.</li>
+    <li>1-3 modern browsers installed. This could include Firefox, Chrome, Opera, Safari, or Internet Explorer 10+.</li>
+    <li>A decent text editor installed. Examples include Sublime Text, gedit, or Notepad++.</li>
+    <li>Intermediate to Expert HTML knowledge including HTML5 features — particularly, the <code>&lt;video&gt;<code> and <code>&lt;track&gt;</code> elements, and HTML5 element fallbacks.</li>
+    <li>Intermediate JavaScript/DOM knowledge.</li>
+</ul>
+
+<h2>Prerequisites for the audience</h2>
+
+<ul>
+    <li>A Linux, Windows or Mac OSX computer would be benefical to follow along with the examples, if the audience is going to be coding along with the presenter (this is optional).
+      <ul>
+        <li>1-3 modern browsers installed. This could include Firefox, Chrome, Opera, Safari, or Internet Explorer 10+.</li>
+        <li>A decent text editor installed. Examples include Sublime Text, gedit, or Notepad++.</li>
+      </ul>
+    </li>
+    <li>Intermediate HTML knowledge, including the basics of HTML <code>&lt;video&gt;</code>.</li>
+    <li>Basic JavaScript knowledge. You don't have to be very knowledgeable to get the most out of this course, but those with no JavaScript knowledge may find a couple of sections hard to grasp.</li>
+</ul>
+
+
+<h2>Key points</h2>
+
+<p>After you present or teach this content kit, your audience will know how to:</p>
+
+<ul>
+  <li>Implement captions and subtitles in HTML videos using the <code>&lt;track&gt;</code> element.</li>
+  <li>Understand WebVTT syntax (including styling) and be able to write your own .vtt files.</li>
+  <li>Implement cross browser fallbacks for <code>&lt;track&gt;</code> using available polyfills.</li>
+  <li>Understand what other types of text track are used for.</li>
+</ul>
+
+<h2>Links to materials</h2>
+
+<p>Project resources overview</p>
+
+    <ul>
+        <li>Source code: XXXlink to github</li>
+        <li>Live demo: XXXlink to github pages page</li>
+        <li>Issue tracker/feedback: File issues again the above Github repo</li>
+        <li>Slides for presenting on subject.</li>
+    </ul>
+
+<p>Supporting docs/references</p>
+
+    <ul>
+        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">The <code>&lt;video&gt;</code> element</a>.</li>
+        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track">The <code>&lt;track&gt;</code> element</a>.</li>
+        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Video_Text_Tracks_Format">The WebVTT format</a>.</li>
+        <li>Article: <a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video">Adding captions and subtitles to HTML5 video</a>.</li>
+        <li>Tutorial for building up demo included in content kit: XXXlink</li>
+    </ul>
+
+
+<h2>Presentation setup and materials</h2>
+
+<ul>
+  <li>Link to slidesXXX include link</li>
+  <li>Links to videos of the presentation materials being used (include this later, once content kit has been delivered)</li>
+</ul>
+
+<p>Presenting about HTML5 video subtitles and captions is fairly simple — you just need the slides and demo materials, downloaded locally if possible so network connectivity is not a problem. Just running the presentation without a code walkthrough or workshop should take about 45 minutes.</p>
+
+<h3>If you want to include live coding, or run a workshop (completely optional)</h3>
+
+<p>If you want to show a detailed code walkthrough, allow another 15-20 minutes, and follow the steps provided in <a href="">the tutorial</a>.</p>
+
+<p>If your viewers have computers available and you want them to follow along with the tutorial, allow an additional 40 minutes for experimentation and Q&amp;A/troubleshooting.</p>
+
+<p>The slides include a marker — &lt;CODE TIME&gt; — to show you where to include each step of the tutorial walkthrough. The tutorial sections include a marker — &lt;SLIDE N&gt; — to show which slide number the section corresponds to. The <a href="">source code</a> has a separate directory for each stage of the tutorial/code walkthrough that shows what the code should look like at each stage.</p>
+
+<p>To make this process as seamless as possible, you (and your attendees) should have the slides open in one browser window, the code result and tutorial open in another browser window, and the code open in your text editor. This way you can easy switch between your slides and your coding environment, if/when the time comes to do some more live coding.</p>
+
+<h2>Demo setup and materials</h2>
+
+<ul>
+  <li>Link to demos XXXINCLUDE LINK</li>
+  <li>Demo script:
+    <ul>
+      <li>In its simplest form, the demo can be run simply by double clicking the index.html file in the <a href="">source code</a>'s final directory, or navigatig to the <a href="">live demo</a>.</li>
+      <li>Play the video, showing how the different text tracks can be selected in the browser's default UI.</li>
+      <li>Show how the video will work across different browsers due to different sources and fallback mechanisms. Make the limitations clear.</li>
+      <li>Show in particular how the default browser implementations aren't very good, so JavaScript is needed to reliably display captions/subtitles</li>
+      <li>Explain the purpose of different types of text track</li>
+      <li>Explain the syntax of WebVTT files, including their (somewhat limited) styling information.</li>
+      <li>Explore how JavaScript can be used to create a custom UI</li>
+    </ul>
+  </li>
+  <li>Troubleshooting:
+    <ul>
+      <li>If the video doesn't play with the subtitles, you might be using a browser that doesn't support all the technologies (e.g. Internet Explorer 9.) Try another browser</li>
+      <li>If the video doesn't play at all and you are trying the online demo, you might be experiencing a slow/bad internet connection. If possible, try an offline demo</li>
+      <li>If you built the demo up using the tutorial, retrace your steps; see if the browser developer console is giving you any useful clues. If in doubt, refer to the published <a href="">final version of the demo code</a>.</li>
+    </ul>
+  </li>
+</ul>
+
+
+<h2>Frequently asked questions (FAQs)</h2>
+
+<p>
+List any questions that the presenter might get here, especially any "difficult" questions. Or link to a file of FAQs.
+</p>
+
+<dl>
+  <dt>Why do we need different sources? Why can't browsers just support the same video formats?</dt>
+  <dd>Because patents and competition. Microsoft and Apple are part patent holders of the H264 video format contained in the MP4 container format. Google, Mozilla and Opera aren't, so they have direct support for the WebM format instead. You should have at least these two formats available, possibly more if you want to support older browsers. Read <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats">Media formats supported by the HTML audio and video elements</a> for exhaustive detail.</dd>
+  <dt>Why was the older (better established) SRT format dropped in favoue of WebVTT?</dt>
+  <dd>Because SRT was only really for subtitles, whereas video text tracks encompass subtitles plus a wide range of other uses. In addition, WebVTT allows you to add rudimentary styling to text tracks.</dd>
+  <dt>Why is JavaScript needed to reliably display captions?</dt>
+  <dd>Modern browsers implement the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a> <code>textTracks</code> property that provides access to all the text tracks associated with the video, and the associated APIs that allow further manipulation of these tracks. However, default browser styling of text tracks is not very reliable, so you are advised to handle it yourself.</dd>
+</dl>

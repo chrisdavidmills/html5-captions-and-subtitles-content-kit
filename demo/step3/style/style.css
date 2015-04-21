@@ -1,0 +1,9 @@
+video::cue { whitespace: pre; }
+
+video::cue(.man) { color:yellow }
+
+video::cue(.woman) { color:white }
+
+video::cue(.dragon) { color:lime }
+
+video::cue(.background) { color:red }

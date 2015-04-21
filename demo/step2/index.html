@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>HTML5 video captions and subtitles</title>
+
+    <link rel="stylesheet" href="style/style.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <video controls preload="metadata">
+		  <source src="../video/sintel-short.mp4" type="video/mp4">
+		  <source src="../video/sintel-short.webm" type="video/webm">
+		  <track label="English" kind="subtitles" srclang="en" src="vtt/sintel-subtitles-en.vtt" default>
+		  <track label="Deutsch" kind="subtitles" srclang="de" src="vtt/sintel-subtitles-de.vtt">
+		  <track label="Español" kind="subtitles" srclang="es" src="vtt/sintel-subtitles-es.vtt">
+
+      <p>It appears that your browser doesn't support HTML5 video. Here's a <a href="../video/sintel-short.mp4">direct link to the video instead</a>.</p>
+	  </video>
+
+
+	  <p>&copy; copyright Blender Foundation | <a href="http://www.sintel.org">www.sintel.org</a></p>
+
+    <p>Thanks to <a href="http://iandevlin.com/">Ian Devlin</a> for letting us use some of his code as the basis for this demo.</p>
+  </body>
+  
+</html>
