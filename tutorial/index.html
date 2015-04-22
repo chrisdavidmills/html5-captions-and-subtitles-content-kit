@@ -18,9 +18,9 @@
 
     <p>In this tutorial we will guide you through the process of adding subtitles and captions to HTML5 video, looking at some of the problems that currently exist, and solutions to those problems.</p>
 
-    <p>Below we will build up a simple demo. You can see the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo">source code</a>, and also <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/demo/final/">view it live</a>. You'll notice that the source code has different directories — these correspond to the different stages of the tutorial, allowing you to both check what your code should look like after each stage, and start the tutorial at any stage, if you don't wish to go right from the beginning.</p>
+    <p>Below we will build up a simple demo. You can see the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo">source code</a>, and also <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/demo/final/">view it live</a>. You'll notice that the source code has different directories — these correspond to the different stages of the tutorial, allowing you to both check what your code should look like after each stage, and start the tutorial at any stage if you don't wish to go right from the beginning.</p>
 
-    <p>At this point, <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/archive/gh-pages.zip">download the content kit</a> so you have the demos code available when working through the tutorial — see the demo directory.</p>
+    <p>At this point, <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/archive/gh-pages.zip">download the content kit</a> so you have the demo code available when working through the tutorial — see the <em>demo</em> directory.</p>
 
     <p>This demo purely concentrates on text tracks, therefore we've not added much in terms of CSS or additional HTML/JavaScript to get in the way. If you want to style your video page up after completing the tutorial, please go ahead!</p>
 
@@ -36,10 +36,11 @@
   &lt;source src="../video/sintel-short.mp4" type="video/mp4"&gt;
   &lt;source src="../video/sintel-short.webm" type="video/webm"&gt;
 
-	&lt;p&gt;It appears that your browser doesn't support HTML5 video. Here's a &lt;a href="../video/sintel-short.mp4"&gt;direct link to the video instead&lt;/a&gt;.&lt;/p&gt;
+	&lt;p&gt;It appears that your browser doesn't support HTML5 video. Here's a
+  &lt;a href="../video/sintel-short.mp4"&gt;direct link to the video instead&lt;/a&gt;.&lt;/p&gt;
 &lt;/video&gt;</code></pre>
 
-    <p>there is not much to see here — we have set the <code>preload</code> attribute value to <code>metadata</code>, so the browser will cache the video's metadata (meaning not too much data is downloaded immediately, but we have access to use data like the video's length), included the default browser controls using the <code>controls</code> attribute, and added a fallback paragraph that is displayed if the browser doesn't support HTML5 video.</p>
+    <p>there is not much to see here — we have set the <code>preload</code> attribute value to <code>metadata</code>, so the browser will cache the video's metadata (meaning not too much data is downloaded immediately, but we have access to useful data like the video's length), included the default browser controls using the <code>controls</code> attribute, and added a fallback paragraph that is displayed if the browser doesn't support HTML5 video.</p>
 
     <p>The two <code>&lt;source&gt;</code> elements provide a choice of different video formats for cross browser support.</p>
 
@@ -57,7 +58,7 @@
 
     <ul>
       <li><code>default</code>: Sets the default text track to display (only one element per video can have this), which can be overridden by JavaScript or user preferences.</li>
-      <li><code>kind</code>: Indicates what kind of text track each track is. Here we only have subtitles, but you can also have captions, descriptions and others.</li>
+      <li><code>kind</code>: Indicates what kind of text track each track is. Here we only have subtitles, but you can also have captions, descriptions and other types.</li>
       <li><code>label</code>: A user-readable title for the text track, which is displayed by the browser when listing available text tracks.</li>
       <li><code>src</code>: The URL of the text track file.</li>
       <li><code>srclang</code>: A language code indicating to the browser what language the text tracks are written in.</li>
@@ -68,13 +69,13 @@
     <ul>
       <li>IE11 provides a menu to allow you to select the required language. It defaults to whichever track has <code>default</code> set on it, otherwise it shows none by default.</li>
       <li>Firefox only loads the first text track defined in the code, and only if it has the <code>default</code> attribute, otherwise it shows nothing. And it doesn't provide a menu to switch tracks.</li>
-      <li>Chrome and Opera load the captions set that matches the browser language, e.g. change your browser to use German as the default language and it automatically loads the German set. If the browser's language matches none of the caption sets, it will load the one that has <code>default</code> set on it. If none of them have <code>default</code> set, it loads nothing. It doesn't provide a menu to switch tracks.</li>
+      <li>Chrome and Opera load the captions set that matches the browser language, e.g. change your browser to use German as the default language and it automatically loads the German set. If the browser's language setting matches none of the caption sets, it will load the one that has <code>default</code> set on it. If none of them have <code>default</code> set, it loads nothing. It doesn't provide a menu to switch tracks.</li>
       <li>Safari actually does a good job, providing a menu to switch tracks, although it seems to ignore the <code>default</code> attribute.</li>
     </ul>
 
     <p>It is therefore a good idea to implement your own custom menu using JavaScript. You'll see how in the next section.</p>
 
-    <p>Try testing your code now by double clicking your index.html file; be warned that if you are using Chrome/Opera for testing, you'll need to run your code through a local web server (such as <a href="http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python">Python SimpleHTTPServer</a>), otherwise you may get an error message in the console about the text tracks being blocked from loading.</p>
+    <p>Try testing your code now by double clicking your <code>index.html</code> file; be warned that if you are using Chrome/Opera for testing, you'll need to run your code through a local web server (such as <a href="http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python">Python SimpleHTTPServer</a>), otherwise you may get an error message in the console about the text tracks being blocked from loading if they are loaded via <code>file://</code>.</p>
 
     <h3>WebVTT syntax basics</h3>
 
@@ -102,9 +103,9 @@ It has shed much innocent blood.</code></pre>
 
     <p>The second line of each block is a timestamp range, indicating what time the text track should start being shown, and what time it should disappear again. The start and end timestamps are in the format <em>hh:mm:ss:msmsms</em>, allowing for very precise times. All digits must be filled in, so for example you can't just write 50 milliseconds as 50 — you'd need to include a leading zero — 050.</p>
 
-    <p>The third line onwards (you can include multiple lines) is the text that you actually want to display.</p>
+    <p>The third line onwards (you can include multiple lines in each block) is the text that you actually want to display.</p>
 
-    <p>Note: there is a lot more than this available in WebVTT syntax. See <a href="#step4">Step 4: captions</a>
+    <p class="note">Note: there is a lot more than this available in WebVTT syntax. See <a href="#step4">Step 4: captions</a>
 
     <h2 id="step3">Step 3: building a custom menu with JavaScript</h2>
 
@@ -112,9 +113,9 @@ It has shed much innocent blood.</code></pre>
 
     <p>Let's add some proper interactivity to our text tracks that works across browsers. You can see the finished version of this code in the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/blob/gh-pages/demo/step3/index.html">step3</a> directory in the source code, if you need to check it out.</p>
 
-    <p>Note: In a real project you'd probably hide the browser's default controls and create a complete custom control set, as shown in <a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Video_player_styling_basics">Video player styling basics</a>. Here however we just wanted to focus on the basics of text tracks.</p>
+    <p class="note">Note: In a real project you'd probably hide the browser's default controls and create a complete custom control set, as shown in <a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Video_player_styling_basics">Video player styling basics</a>. Here however we just wanted to focus on the basics of text tracks.</p>
 
-    <p>First of all, add the following HTML below your <code>&lt;video&gt;</code> element's closing tag:</p>
+    <p>First of all, add the following HTML below your <code>&lt;/video&gt;</code> closing tag:</p>
 
 <pre><code>&lt;form&gt;
   &lt;select name="select"&gt;
@@ -131,7 +132,7 @@ var select = document.querySelector('select');</code></pre>
 
     <p>This simply grabs a reference to the elements we want to manipulate using JavaScript.</p>
 
-    <p>Next, add the following below your first two lines.</p>
+    <p>Next, add the following below your first two lines of JavaScript.</p>
 
 <pre><code>function hideTracks() {
   for (var i = 0; i < video.textTracks.length; i++) {
@@ -166,7 +167,7 @@ select.addEventListener('change',function() {
 
 <p>Then we loop through our text tracks again. This time, in each loop we store a reference to the current text track in <code>curTrack</code> (to make writing subsequent code shorter), create a new <code>&lt;option&gt;</code> element, and give it a value and text content based on the current track's <code>kind</code>, <code>language</code> and <code>label</code> properties. We then add each <code>&lt;option&gt;</code> element to the <code>&lt;select&gt;</code> element.</p>
 
-<p>The final part of this code adds an event lister to our <code>&lt;select&gt;</code> element so that every time its value is changed, it runs a function called <code>trackChange()</code>, passing it the current select value. We'll look at this function in the next section — for now, save and refresh, and have a look at the generated code in your browser dev tools, to help you understand what the last section of code did:</p>
+<p>The final part of this code adds an event lister to our <code>&lt;select&gt;</code> element so that every time its value is changed, it runs a function called <code>trackChange()</code>, passing it the current select value. We'll look at this function in the next section — for now, save and refresh, and have a look at the generated code in your browser dev tools, to help you understand what the last section of code did. It will look something like this:</p>
 
 <pre><code>&lt;select name="select"&gt;
     &lt;option value="off"&gt;
@@ -204,9 +205,9 @@ select.addEventListener('change',function() {
 
     <p>The argument the function takes is the value of the <code>&lt;select&gt;</code> element after a new option has been selected in it. the first <code>if</code> block checks whether that value is <code>off</code>. If so, we just run the <code>hideTracks()</code> function to hide any active subtitles.</p>
 
-    <p>If the value isn't <code>off</code>, the <code>else</code> block is run. First, the <code>hideTracks()</code> function is run again, because we don't want to have multiple tracks shown at the same time.</p>
+    <p>If the value isn't <code>off</code>, the <code>else</code> block is run. First, the <code>hideTracks()</code> function is run, because we don't want to have multiple tracks shown at the same time.</p>
 
-    <p>Next, we split the value at the "-" character, to get an array or two values — the first is the track <code>kind</code>, and the second is the track <code>language</code>. Remember how when we generated the select menu in the first place, we generated the values from the <code>kind</code> and <code>language</code> and put a "-" in the middle of them, e.g. <code>subtitles-en</code>? Here we are going in the opposite direction.</p>
+    <p>Next, we split the value at the "-" character, to get an array of two values — the first is the track <code>kind</code>, and the second is the track <code>language</code>. Remember how when we generated the select menu in the first place, we generated the values from the <code>kind</code> and <code>language</code> and put a "-" in the middle of them, e.g. <code>subtitles-en</code>? Here we are going in the opposite direction.</p>
 
     <p>Next we have a <code>for</code> loop with two nested <code>if</code>s. In each loop iteration, if the current text track's <code>kind</code> is equal to the kind from the select value , we then test to see if the current text track's <code>language</code> is equal to the language from the select value. If that's also true, then we've found the correct text track and we display it by setting its <code>mode</code> to <code>showing</code>.</p>
 
@@ -218,17 +219,17 @@ select.addEventListener('change',function() {
 
     <p>So far we have only added subtitles to our video, but we should keep in mind that there are other types of text tracks to consider. Subtitles are generally for the use of people who can hear the audio dialog, but can't understand the language it is spoken in. They only include the words that are being spoken and are not positioned.</p>
 
-    <p>Captions on the other hand are generally for the use of people who are deaf or hard of hearing. They tend to include information on who is speaking each line of dialog, and the lines are often positioned closer to the character to further aid recogition of this. In addition, captions tend to include information to describe any music that plays or sound effects that occur.</p>
+    <p>Captions on the other hand are generally for the use of people who are deaf or hard of hearing. They tend to include information on who is speaking each line of dialog, and the lines are often positioned near to the character to further aid recogition of this. In addition, captions tend to include information to describe any music that plays, sound effects that occur, etc.</p>
 
-    <p>Open your index.html file and add the following line below the first <code>&lt;track&gt;</code> element:
+    <p>Open your <code>index.html</code> file and add the following line below the first <code>&lt;track&gt;</code> element:
 
 <pre><code>&lt;track label="English" kind="captions" srclang="en" src="vtt/sintel-captions-en.vtt"&gt;</code></pre>
 
-    <p>Now try refreshing your example — you should now have a fourth option in your select menu — English captions. Choose this one and observe how it differs from the english subtitles.</p>
+    <p>Now try refreshing your example — you should now have a fourth option in your select menu — English captions. Choose this one and observe how it differs from the English subtitles.</p>
 
     <h3>Cue Settings</h3>
 
-    <p>Open up your sintel-captions-en.vtt file — the cues in this file have some extra information available:</p>
+    <p>Open up your <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/blob/gh-pages/demo/step4/vtt/sintel-captions-en.vtt">sintel-captions-en.vtt</a> file — you'll see that the cues in this file have some extra information available, for example:</p>
 
 <pre><code>1
 00:00:18.700 --> 00:00:21.500 line:20% align:end
@@ -236,14 +237,12 @@ select.addEventListener('change',function() {
 
 <p>On the second line after the cue timings we can see <strong>Cue settings</strong> — optional instructions used to position where the cue text will be displayed over the video.</p>
 
-<p>A setting's name and value are separated by a colon. The settings are case sensitive so use lower case as shown. There are five cue settings:</p>
+<p>A setting's name and value are separated by a colon. The settings are case sensitive so use lower case as shown. There are five cue settings:, discussed in the sections below.</p>
 
-<ul>
- <li><b>vertical</b>
+<h4>vertical</h4>
 
-  <ul>
-   <li>Indicates that the text will be displayed vertically rather than horizontally, such as in some Asian languages.</li>
-  </ul>
+
+   <p><code>vertical</code> indicates that the text will be displayed vertically rather than horizontally, such as in some Asian languages.</p>
 
   <table>
    <thead>
@@ -262,24 +261,25 @@ select.addEventListener('change',function() {
     </tr>
    </tbody>
   </table>
- </li>
- <li><b>line</b>
-  <ul>
-   <li>Specifies where text appears vertically. If vertical is set, line specifies where text appears horizontally.</li>
-   <li>Value can be a line number
+
+<h4>line</h4>
+
+<p><code>line</code> specifies where text appears vertically. If <code>vertical</code> is set, <code>line</code> specifies where text appears horizontally.</p>
+
+<p>Value can be a line number:</p>
+
     <ul>
      <li>The line height is the height of the first line of the cue as it appears on the video</li>
      <li>Positive numbers indicate top down</li>
      <li>Negative numbers indicate bottom up</li>
     </ul>
    </li>
-   <li>Or value can be a percentage
+
+<p>Or value can be a percentage</p>
     <ul>
      <li>Must be an integer (i.e. no decimals) between 0 and 100 inclusive</li>
      <li>Must be followed by a percent sign (%)</li>
     </ul>
-   </li>
-  </ul>
 
   <table>
    <thead>
@@ -320,10 +320,12 @@ select.addEventListener('change',function() {
     </tr>
    </tbody>
   </table>
- </li>
- <li><b>position</b>
-  <ul>
-   <li>Specifies where the text will appear horizontally. If vertical is set, position specifies where the text will appear vertically.</li>
+
+<h4>position</h4>
+
+<p><code>position</code> specifies where the text will appear horizontally. If <code>vertical</code> is set, <code>position</code> specifies where the text will appear vertically.</li>
+
+  <ul>  
    <li>Value is a percentage</li>
    <li>Must be an integer (no decimals) between 0 and 100 inclusive</li>
    <li>Must be followed by a percent sign (%)</li>
@@ -356,10 +358,12 @@ select.addEventListener('change',function() {
     </tr>
    </tbody>
   </table>
- </li>
- <li><b>size</b>
+
+<h4>size</h4>
+
+<p><code>size</code> specifies the width of the text area. If <code>vertical</code> is set, <code>size</code> specifies the height of the text area.</li>
+
   <ul>
-   <li>Specifies the width of the text area. If vertical is set, size specifies the height of the text area.</li>
    <li>Value is a percentage</li>
    <li>Must be an integer (i.e. no decimals) between 0 and 100 inclusive</li>
    <li>Must be followed by a percent sign (%)</li>
@@ -392,11 +396,10 @@ select.addEventListener('change',function() {
     </tr>
    </tbody>
   </table>
- </li>
- <li><b>align</b>
-  <ul>
-   <li>Specifies the alignment of the text. Text is aligned within the space given by the size cue setting if it is set.</li>
-  </ul>
+
+<h4>align</h4>
+
+<p><code>align</code> specifies the alignment of the text. Text is aligned within the space given by the size cue setting if it is set.</p>
 
   <table>
    <thead>
@@ -434,7 +437,7 @@ select.addEventListener('change',function() {
  </li>
 </ul>
 
-    <h3>Styling the displayed subtitles</h3>
+<h3>Styling the displayed subtitles</h3>
 
     <p>Lets have a look at our caption example again:</p>
 
@@ -444,7 +447,7 @@ select.addEventListener('change',function() {
 
 <p>You can see that the text cue has some special tags marking it up. Text cues can be styled via <a href="http://dev.w3.org/html5/webvtt/#css-extensions">CSS Extensions</a>.</p>
 
-    <p>The <code>::cue</code> pseudo-element is the key to targetting individual text track cues for styling, as it matches any defined cue. Have a look in the style/style.css file and you'll see some simple rulesets like this:</p>
+    <p>The <code>::cue</code> pseudo-element is the key to targetting individual text track cues for styling, as it matches any defined cue. Have a look in the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/blob/gh-pages/demo/step4/style/style.css">style/style.css file</a> and you'll see some simple rulesets like this:</p>
 
 <pre><code>video::cue { whitespace: pre; }
 
@@ -452,7 +455,7 @@ video::cue(.man) { color:yellow }</code></pre>
 
     <p>The first rule conserves whitespace on all cues, whereas subsequent rules apply different colours to the text spoken by specific characters.</p>
 
-    <h4>What properties can be applied to text cues?</h4>
+    <h3>What properties can be applied to text cues?</h3>
 
     <p>There are only a handful of CSS properties that can be applied to a text cue:</p>
 
@@ -468,36 +471,18 @@ video::cue(.man) { color:yellow }</code></pre>
      <li><code>white-space</code></li>
     </ul>
 
-    <h4>What tags are available to cues?</h4>
+    <h3>What tags are available to cues?</h3>
 
     <p>The different available tags are as follows:</p>
 
-    <ul>
- <li><b>Timestamp tag</b>
+    <h4>Timestamp tag</h4>
 
-  <ul>
-   <li>The timestamp must be greater that the cue's start timestamp, greater than any previous timestamp in the cue payload, and less than the cue's end timestamp. The
-    <i>active text</i>
-    is the text between the timestamp and the next timestamp or to the end of the payload if there is not another timestamp in the payload. Any text before the
 
-    <i>active text</i>
-    in the payload is
+   <p>The timestamp tag specifies a timestamp to show a subset of the cue text at a slightly later time than the start timestamp specifies. The timestamp must be greater that the cue's start timestamp, greater than any previous timestamp in the cue payload, and less than the cue's end timestamp.</p>
 
-    <i>previous text</i>
-    . Any text beyond the
+   <p>The <em>active text</em> is the text between the timestamp and the next timestamp or to the end of the payload if there is not another timestamp in the payload. Any text before the <em>active text</em> in the payload is <em>previous text</em>. Any text beyond the <em>active text</em> is <em>future text</em>. This enables karaoke style captions.</p>
 
-    <i>active text</i>
-    is
-
-    <i>future text</i>
-    . This enables karaoke style captions.</li>
-  </ul>
-
-  <div style="margin-left: 30px;">
-  <h5 id="Example_12_-_Karaoke_style_text">Example 12 - Karaoke style text</h5>
-
-  <pre>
-1
+<pre>1
 00:16.500 --&gt; 00:18.500
 When the moon &lt;00:17.500&gt;hits your eye
 
@@ -507,101 +492,53 @@ Like a &lt;00:19.000&gt;big-a &lt;00:19.500&gt;pizza &lt;00:20.000&gt;pie
 
 1
 00:00:20.500 --&gt; 00:00:21.500
-That's &lt;00:00:21.000&gt;amore
-      </pre>
-  </div>
- </li>
-</ul>
+That's &lt;00:00:21.000&gt;amore</pre>
 
 <p>The following tags require opening and closing tags (e.g. <code>&lt;b&gt;text&lt;/b&gt;</code>).</p>
 
-<ul>
- <li><b>Class tag</b> (<code>&lt;c&gt;&lt;/c&gt;</code>)
+<h4>Class tag</h4> 
 
-  <ul>
-   <li>Style the contained text using a CSS class.</li>
+<p>The class tag (<code>&lt;c&gt;&lt;/c&gt;</code>) styles the contained text using a CSS class.</p>
+
+  <pre>&lt;c.classname&gt;text&lt;/c&gt;</pre>
+
+<h4>Italics tag</h4>
+
+<p>The italics tag (<code>&lt;i&gt;&lt;/i&gt;</code>) Italicizes the contained text.</p>
+
+
+  <pre>&lt;i&gt;text&lt;/i&gt;</pre>
+
+<h4>Bold tag</h4> 
+
+<p>The bold tag (<code>&lt;b&gt;&lt;/b&gt;</code>) bolds the contained text.</p>
+
+<pre>&lt;b&gt;text&lt;/b&gt;</pre>
+
+<h4>Underline tag</h4>
+
+<p>The underline tag (<code>&lt;u&gt;&lt;/u&gt;</code>) underlines the contained text.</p>
+
+<pre>&lt;u&gt;text&lt;/u&gt;</pre>
+
+<h4>Ruby tag</h4> 
+
+<p>The Ruby tag (<code>&lt;ruby&gt;&lt;/ruby&gt;</code>) is used with ruby text tags to display <a href="http://en.wikipedia.org/wiki/Ruby_character">ruby characters</a> (i.e. small annotative characters above other characters).</p>
+
+<pre>&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</pre>
+
+<h4>Ruby text tag</h4> 
+
+<p>The ruby text tag (<code>&lt;rt&gt;&lt;/rt&gt;</code>) is used with ruby tags to display <a href="http://en.wikipedia.org/wiki/Ruby_character">ruby characters</a> (i.e. small annotative characters above other characters).</p>
   </ul>
 
-  <div style="margin-left: 30px;">
-  <h5 id="Example_14_-_Class_tag">Example 14 - Class tag</h5>
+<pre>&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</pre>
 
-  <pre>
-&lt;c.classname&gt;text&lt;/c&gt;</pre>
-  </div>
- </li>
- <li><b>Italics tag</b> (<code>&lt;i&gt;&lt;/i&gt;</code>)
-  <ul>
-   <li>Italicize the contained text.</li>
-  </ul>
+<h4>Voice tag</h4>
 
-  <div style="margin-left: 30px;">
-  <h5 id="Example_15_-_Italics_tag">Example 15 - Italics tag</h5>
+<p>Similar to class tag, the voice tag (<code>&lt;v&gt;&lt;/v&gt;</code>) is also used to style the contained text using CSS.</p>
 
-  <pre>
-&lt;i&gt;text&lt;/i&gt;</pre>
-  </div>
- </li>
- <li><b>Bold tag</b> (<code>&lt;b&gt;&lt;/b&gt;</code>)
-  <ul>
-   <li>Bold the contained text.</li>
-  </ul>
-
-  <div style="margin-left: 30px;">
-  <h5 id="Example_16_-_Bold_tag">Example 16 - Bold tag</h5>
-
-  <pre>
-&lt;b&gt;text&lt;/b&gt;</pre>
-  </div>
- </li>
- <li><b>Underline tag</b> (<code>&lt;u&gt;&lt;/u&gt;</code>)
-  <ul>
-   <li>Underline the contained text.</li>
-  </ul>
-
-  <div style="margin-left: 30px;">
-  <h5 id="Example_17_-_Underline_tag">Example 17 - Underline tag</h5>
-
-  <pre>
-&lt;u&gt;text&lt;/u&gt;</pre>
-  </div>
- </li>
- <li><b>Ruby tag</b> (<code>&lt;ruby&gt;&lt;/ruby&gt;</code>)
-  <ul>
-   <li>Used with ruby text tags to display <a href="http://en.wikipedia.org/wiki/Ruby_character">ruby characters</a> (i.e. small annotative characters above other characters).</li>
-  </ul>
-
-  <div style="margin-left: 30px;">
-  <h5 id="Example_18_-_Ruby_tag">Example 18 - Ruby tag</h5>
-
-  <pre>
-&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</pre>
-  </div>
- </li>
- <li><b>Ruby text tag</b> (<code>&lt;rt&gt;&lt;/rt&gt;</code>)
-  <ul>
-   <li>Used with ruby tags to display <a href="http://en.wikipedia.org/wiki/Ruby_character">ruby characters</a> (i.e. small annotative characters above other characters).</li>
-  </ul>
-
-  <div style="margin-left: 30px;">
-  <h5 id="Example_19_-_Ruby_text_tag">Example 19 - Ruby text tag</h5>
-
-  <pre>
-&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</pre>
-  </div>
- </li>
- <li><b>Voice tag</b> (<code>&lt;v&gt;&lt;/v&gt;</code>)
-  <ul>
-   <li>Similar to class tag, also used to style the contained text using CSS.</li>
-  </ul>
-
-  <div style="margin-left: 30px;">
-  <h5 id="Example_20_-_Voice_tag">Example 20 - Voice tag</h5>
-
-  <pre>
-&lt;v Bob&gt;text&lt;/v&gt;</pre>
-  </div>
- </li>
-</ul>
+<pre>&lt;v Bob&gt;text&lt;/v&gt;</pre></div>
 
 <h2>Conclusion</h2>
 
