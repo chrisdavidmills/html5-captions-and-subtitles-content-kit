@@ -40,9 +40,13 @@ h4 {
     font-size: 2em;
 }
 
-p,li,pre {
+p,li,pre,dd,dt {
     font-size: 1.4em;
     line-height: 1.8;
+}
+
+li li {
+  font-size: 1em;
 }
 
 .note {
@@ -119,5 +123,10 @@ li {
 
 li:last-child {
   padding-bottom: 0px;
+}
+
+dt {
+  padding: 15px 0;
+  font-weight: bold;
 }
 
