@@ -1,15 +1,123 @@
+html {
+  margin: 0;
+  font-size: 10px;
+}
+
 body {
-    margin: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    width: 60%;
+    max-width: 700px;
+    min-width: 460px;
     font-family: "Open Sans",sans-serif;
     line-height: 1.5;
     color: #4D4E53;
 }
 
+h1,h2,h3,h4,h5 {
+    margin: 0;
+}
+
 h1 {
-    background-image: url('/img/mdn_logo.png');
+    background-image: url('../img/mdn_logo.png');
     background-repeat: no-repeat;
     background-position: 0 0;
     background-size: 50px 50px;
-    padding: 10px 0 0 0;
-    height: 50px;
+    padding: 0 0 0 70px;
+    font-size: 3.4em;
+    margin: 1em 0;
 }
+
+h2 {
+    font-size: 3em;
+}
+
+h3 {
+    font-size: 2.4em;
+}
+
+h4 {
+    font-size: 2em;
+}
+
+p,li,pre {
+    font-size: 1.4em;
+    line-height: 1.8;
+}
+
+.note {
+    background: rgba(231, 228, 157, 0.25) none repeat scroll 0% 0%;
+    border-color: rgba(231, 228, 157, 0.15);
+    border-style: solid;
+    border-width: 5px;
+    color: rgba(0, 0, 0, 0.65);
+    font-style: italic;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+}
+
+code {
+  background: #FAFBFC;
+  padding: 2px 4px;
+  border: 1px solid #E9EAEB;
+}
+
+pre code, table code {
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+pre {
+  background: #FAFBFC url("../img/blueprint-dark.png") repeat scroll center top;
+  border-left: 6px solid #558ABB;
+  padding: 10px;
+}
+
+table {
+    border: 2px solid #FFF;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+
+th,td {
+  text-align: left;
+  font-size: 14px;
+  padding: 2px 8px 4px;
+}
+
+th {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #FFF #FFF #D4DDE4;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    background: rgba(212, 221, 228, 0.5) none repeat scroll 0% 0%;
+    font-weight: 700;
+}
+
+td {
+    background-color: rgba(212, 221, 228, 0.15);
+    border: 2px solid #FFF;
+    box-shadow: 0px -1px 0px 0px rgba(212, 221, 228, 0.5) inset;
+}
+
+a:link {
+    text-decoration: underline;
+}
+
+a:hover,a:focus {
+    text-decoration: none;
+}
+
+li {
+  padding-bottom: 10px;
+}
+
+li:last-child {
+  padding-bottom: 0px;
+}
+

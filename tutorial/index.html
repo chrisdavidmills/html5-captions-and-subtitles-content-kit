@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <h1>Adding captions and subtitles tutorial</h1>
+    <h1>Adding captions and subtitles</h1>
 
     <p>In this tutorial we will guide you through the process of adding subtitles and captions to HTML5 video, looking at some of the problems that currently exist, and solutions to those problems.</p>
 
@@ -24,11 +24,11 @@
 
     <p>This demo purely concentrates on text tracks, therefore we've not added much in terms of CSS or additional HTML/JavaScript to get in the way. If you want to style your video page up after completing the tutorial, please go ahead!</p>
 
-    <p>Note: Thanks to <a href="http://iandevlin.com/">Ian Devlin</a> for letting us use some of his code as the basis for the demo in this tutorial.</p>
+    <p class="note"><strong>Note</strong>: Thanks to <a href="http://iandevlin.com/">Ian Devlin</a> for letting us use some of his code as the basis for the demo in this tutorial.</p>
 
     <h2 id="start">Start: A basic HTML5 video</h2>
 
-    <p class="note">Note: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#5">Slide 5</a> of the slideshow.</p>
+    <p class="note"><strong>Note</strong>: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#5">Slide 5</a> of the slideshow.</p>
 
     <p>Let's begin by inspecting the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/blob/gh-pages/demo/start/index.html">start state of the demo</a>. At this point we have a simple HTML5 video in our page, and not much else:</p>
 
@@ -46,7 +46,7 @@
 
     <h2 id="step2">Step 2: Adding subtitles</h2>
 
-    <p class="note">Note: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#8">Slide 8</a> of the slideshow.</p>
+    <p class="note"><strong>Note</strong>: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#8">Slide 8</a> of the slideshow.</p>
 
     <p>Now let's move on to adding some text tracks to our video. Open up your start index.html file, and add the following lines below the <code>&lt;source&gt;</code> elements:</p>
 
@@ -105,15 +105,15 @@ It has shed much innocent blood.</code></pre>
 
     <p>The third line onwards (you can include multiple lines in each block) is the text that you actually want to display.</p>
 
-    <p class="note">Note: there is a lot more than this available in WebVTT syntax. See <a href="#step4">Step 4: captions</a>
+    <p class="note"><strong>Note</strong>: there is a lot more than this available in WebVTT syntax. See <a href="#step4">Step 4: captions</a>
 
     <h2 id="step3">Step 3: building a custom menu with JavaScript</h2>
 
-    <p class="note">Note: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#16">Slide 16</a> of the slideshow.</p>
+    <p class="note"><strong>Note</strong>: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#16">Slide 16</a> of the slideshow.</p>
 
     <p>Let's add some proper interactivity to our text tracks that works across browsers. You can see the finished version of this code in the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/blob/gh-pages/demo/step3/index.html">step3</a> directory in the source code, if you need to check it out.</p>
 
-    <p class="note">Note: In a real project you'd probably hide the browser's default controls and create a complete custom control set, as shown in <a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Video_player_styling_basics">Video player styling basics</a>. Here however we just wanted to focus on the basics of text tracks.</p>
+    <p class="note"><strong>Note</strong>: In a real project you'd probably hide the browser's default controls and create a complete custom control set, as shown in <a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Video_player_styling_basics">Video player styling basics</a>. Here however we just wanted to focus on the basics of text tracks.</p>
 
     <p>First of all, add the following HTML below your <code>&lt;/video&gt;</code> closing tag:</p>
 
@@ -215,7 +215,7 @@ select.addEventListener('change',function() {
 
     <h2 id="step4">Step 4: captions versus subtitles</h2>
 
-    <p class="note">Note: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#26">Slide 26</a> of the slideshow.</p>
+    <p class="note"><strong>Note</strong>: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#26">Slide 26</a> of the slideshow.</p>
 
     <p>So far we have only added subtitles to our video, but we should keep in mind that there are other types of text tracks to consider. Subtitles are generally for the use of people who can hear the audio dialog, but can't understand the language it is spoken in. They only include the words that are being spoken and are not positioned.</p>
 
@@ -245,11 +245,6 @@ select.addEventListener('change',function() {
    <p><code>vertical</code> indicates that the text will be displayed vertically rather than horizontally, such as in some Asian languages.</p>
 
   <table>
-   <thead>
-    <tr>
-     <th colspan="2">Table 1 - vertical values</th>
-    </tr>
-   </thead>
    <tbody>
     <tr>
      <th><code>vertical:rl</code></th>
@@ -282,11 +277,6 @@ select.addEventListener('change',function() {
     </ul>
 
   <table>
-   <thead>
-    <tr>
-     <th colspan="4">Table 2 - line examples</th>
-    </tr>
-   </thead>
    <tbody>
     <tr>
      <th>&nbsp;</th>
@@ -332,11 +322,6 @@ select.addEventListener('change',function() {
   </ul>
 
   <table>
-   <thead>
-    <tr>
-     <th colspan="4">Table 3 - position examples</th>
-    </tr>
-   </thead>
    <tbody>
     <tr>
      <th>&nbsp;</th>
@@ -370,11 +355,6 @@ select.addEventListener('change',function() {
   </ul>
 
   <table>
-   <thead>
-    <tr>
-     <th colspan="4">Table 4 - size examples</th>
-    </tr>
-   </thead>
    <tbody>
     <tr>
      <th>&nbsp;</th>
@@ -402,11 +382,6 @@ select.addEventListener('change',function() {
 <p><code>align</code> specifies the alignment of the text. Text is aligned within the space given by the size cue setting if it is set.</p>
 
   <table>
-   <thead>
-    <tr>
-     <th colspan="4">Table 5 - align values</th>
-    </tr>
-   </thead>
    <tbody>
     <tr>
      <th>&nbsp;</th>
@@ -482,7 +457,7 @@ video::cue(.man) { color:yellow }</code></pre>
 
    <p>The <em>active text</em> is the text between the timestamp and the next timestamp or to the end of the payload if there is not another timestamp in the payload. Any text before the <em>active text</em> in the payload is <em>previous text</em>. Any text beyond the <em>active text</em> is <em>future text</em>. This enables karaoke style captions.</p>
 
-<pre>1
+<pre><code>1
 00:16.500 --&gt; 00:18.500
 When the moon &lt;00:17.500&gt;hits your eye
 
@@ -492,7 +467,7 @@ Like a &lt;00:19.000&gt;big-a &lt;00:19.500&gt;pizza &lt;00:20.000&gt;pie
 
 1
 00:00:20.500 --&gt; 00:00:21.500
-That's &lt;00:00:21.000&gt;amore</pre>
+That's &lt;00:00:21.000&gt;amore</code></pre>
 
 <p>The following tags require opening and closing tags (e.g. <code>&lt;b&gt;text&lt;/b&gt;</code>).</p>
 
@@ -500,45 +475,45 @@ That's &lt;00:00:21.000&gt;amore</pre>
 
 <p>The class tag (<code>&lt;c&gt;&lt;/c&gt;</code>) styles the contained text using a CSS class.</p>
 
-  <pre>&lt;c.classname&gt;text&lt;/c&gt;</pre>
+<pre><code>&lt;c.classname&gt;text&lt;/c&gt;</code></pre>
 
 <h4>Italics tag</h4>
 
 <p>The italics tag (<code>&lt;i&gt;&lt;/i&gt;</code>) Italicizes the contained text.</p>
 
 
-  <pre>&lt;i&gt;text&lt;/i&gt;</pre>
+<pre><code>&lt;i&gt;text&lt;/i&gt;</code></pre>
 
 <h4>Bold tag</h4> 
 
 <p>The bold tag (<code>&lt;b&gt;&lt;/b&gt;</code>) bolds the contained text.</p>
 
-<pre>&lt;b&gt;text&lt;/b&gt;</pre>
+<pre><code>&lt;b&gt;text&lt;/b&gt;</code></pre>
 
 <h4>Underline tag</h4>
 
 <p>The underline tag (<code>&lt;u&gt;&lt;/u&gt;</code>) underlines the contained text.</p>
 
-<pre>&lt;u&gt;text&lt;/u&gt;</pre>
+<pre><code>&lt;u&gt;text&lt;/u&gt;</code></pre>
 
 <h4>Ruby tag</h4> 
 
 <p>The Ruby tag (<code>&lt;ruby&gt;&lt;/ruby&gt;</code>) is used with ruby text tags to display <a href="http://en.wikipedia.org/wiki/Ruby_character">ruby characters</a> (i.e. small annotative characters above other characters).</p>
 
-<pre>&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</pre>
+<pre><code>&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</code></pre>
 
 <h4>Ruby text tag</h4> 
 
 <p>The ruby text tag (<code>&lt;rt&gt;&lt;/rt&gt;</code>) is used with ruby tags to display <a href="http://en.wikipedia.org/wiki/Ruby_character">ruby characters</a> (i.e. small annotative characters above other characters).</p>
   </ul>
 
-<pre>&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</pre>
+<pre><code>&lt;ruby&gt;WWW&lt;rt&gt;World Wide Web&lt;/rt&gt;oui&lt;rt&gt;yes&lt;/rt&gt;&lt;/ruby&gt;</code></pre>
 
 <h4>Voice tag</h4>
 
 <p>Similar to class tag, the voice tag (<code>&lt;v&gt;&lt;/v&gt;</code>) is also used to style the contained text using CSS.</p>
 
-<pre>&lt;v Bob&gt;text&lt;/v&gt;</pre></div>
+<pre><code>&lt;v Bob&gt;text&lt;/v&gt;</code></pre>
 
 <h2>Conclusion</h2>
 

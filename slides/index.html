@@ -77,9 +77,9 @@
 	<section class="slide"><div>
 		<h2>A solid basis to start from</h2>
 		<ul>
-		  <li>Multiple <code>source</code> tags for cross browser support</li>
-		  <li>include default controls</li>
-		  <li>Include a fallback direct link to the video, for non-supporting browsers</li>
+		  <li>Multiple <code>source</code> tags for cross browser support.</li>
+		  <li>Include default controls.</li>
+		  <li>Include a fallback direct link to the video, for non-supporting browsers.</li>
 		</ul>
 	</div></section>
 
@@ -209,8 +209,8 @@
         <ul>  
           <li>File must start with WEBVTT.</li>
           <li>Next include separate text track blocks, each starting with a number. The numbers must go up in order.</li>
-          <li>Second line of each block is a timestamp range = what time the text track should shown, and disappear again.
-          <li>Time format is hh:mm:ss:msmsms, allowing for very precise times.</li>
+          <li>Second line of each block is a timestamp range, specifying what time the text track should shown, and disappear again.
+          <li>Time format is <code>hh:mm:ss:msmsms</code>, allowing for very precise times.</li>
           <li>The third line onwards (you can include multiple lines) is the text you want to display.</li>
 
         </ul>
@@ -230,7 +230,7 @@
 
 	<section class="slide"><div>
 		<h2>You can use whatever UI you want</h2>
-		<p>We are using a select menu</p>
+		<p>We are using a select menu:</p>
         <pre>
 		  <code>&lt;form&gt;</code>
 		  <code>  &lt;select name="select"&gt;</code>
@@ -306,7 +306,7 @@
           <code>  addTrackOpt.setAttribute('value',curTrack.kind + '-' + curTrack.language);</code>
           <code>  addTrackOpt.textContent = curTrack.label + ' ' + curTrack.kind;</code>
           <code>  select.appendChild(addTrackOpt);</code>
-          <code>}
+          <code>}</code>
 		</pre>
 		  <style>
 			pre {
@@ -380,7 +380,7 @@
 		<ul>
 		  <li>If 'off' value selected, hide all tracks.</li>
 		  <li>If another value selected, hide all tracks, then...</li>
-		  <li>split the select value into track <code>kind</code> and <code>language</code>.</li>
+		  <li>Split the select value into track <code>kind</code> and <code>language</code>.</li>
 		  <li>Loop through the video text tracks to find the one that has that <code>kind</code> and <code>language</code>.</li>
 		  <li>Show the text track that matches.</li>
 		</ul>
@@ -403,7 +403,7 @@
 		  <li>They only include the words that are being spoken and are not positioned.</li>
 		  <li>Captions are for people who are deaf or hard of hearing.</li>
 		  <li>They include information on who is speaking, with positioning.
-		  <li>they also include information to describe music ambient sound effects.</li>
+		  <li>They also include information to describe music ambient sound effects.</li>
 		</ul>
 	</div></section>
 
@@ -454,7 +454,7 @@
 		  <li><code>line</code>: Specifies the line the text appears on.</li>
 		  <li><code>position</code>: Specifies the position the text will appear at along the line.</li>
 		  <li><code>size</code>: Specifies the size (width) of the text.</li>
-		  <li><code>align</code>: Specifies the text alignment</li>
+		  <li><code>align</code>: Specifies the text alignment.</li>
 		</ul>
 	</div></section>
 
@@ -477,7 +477,7 @@
 	<section class="slide"><div>
 		<h2>Styling captions</h2>
 
-        <p><code>::cue</code> pseudo-element = the key to targetting text track cues for styling.</p>
+        <p>The <code>::cue</code> pseudo-element is the key to targetting text track cues for styling.</p>
 
         <pre>
           <code>video::cue { whitespace: pre; }</code>
@@ -493,8 +493,6 @@
 
 	<section class="slide"><div>
 		<h2>What properties can be applied to text cues?</h2>
-
-        <p>Only a small amount:</p>
 
         <ul>
           <li><code>color</code></li>
@@ -541,7 +539,7 @@
 		<ul>
 		  <li><a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video">Adding captions and subtitles to HTML5 video</a> (MDN)</li>
 		  <li><a href="http://www.html5rocks.com/en/tutorials/track/basics/">Getting Started With the Track Element</a> (HTML5 Rocks)</li>
-		  <li><a href="">Working with HTML5 Video: Adding captions and subtitles</a> content kit homepage</li>
+		  <li><a href="https://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/">Working with HTML5 Video: Adding captions and subtitles</a> (Content kit homepage)</li>
 		</ul>
 	</div></section>
 
