@@ -26,7 +26,7 @@
 
     <p>Note: Thanks to <a href="http://iandevlin.com/">Ian Devlin</a> for letting us use some of his code as the basis for the demo in this tutorial.</p>
 
-    <h2>Start: A basic HTML5 video</h2>
+    <h2 id="start">Start: A basic HTML5 video</h2>
 
     <p>Let's begin by inspecting the <a href="">start state of the demo</a>. At this point we have a simple HTML5 video in our page, and not much else:</p>
 
@@ -41,7 +41,7 @@
 
     <p>The two <code>&lt;source&gt;</code> elements provide a choice of different video formats for cross browser support.</p>
 
-    <h2>Step 2: Adding subtitles</h2>
+    <h2 id="step2">Step 2: Adding subtitles</h2>
 
     <p>Now let's move on to adding some text tracks to our video. Open up your start index.html file, and add the following lines below the <code>&lt;source&gt;</code> elements:</p>
 
@@ -102,7 +102,7 @@ It has shed much innocent blood.</code></pre>
 
     <p>Note: there is a lot more than this available in WebVTT syntax. See <a href="#step4">Step 4: captions</a>
 
-    <h2>Step 3: building a custom menu with JavaScript</h2>
+    <h2 id="step3">Step 3: building a custom menu with JavaScript</h2>
 
     <p>Let's add some proper interactivity to our text tracks that works across browsers. You cna see the finished version of this code in the <a href="">step3</a> directory in the source code, if you need to check it out.</p>
 
@@ -206,7 +206,7 @@ select.addEventListener('change',function() {
 
     <p>Save your code and try it out again.</p>
 
-    <h2>Step 4: captions versus subtitles</h2>
+    <h2 id="step4">Step 4: captions versus subtitles</h2>
 
     <p>So far we have only added subtitles to our video, but we should keep in mind that there are other types of text tracks to consider. Subtitles are generally for the use of people who can hear the audio dialog, but can't understand the language it is spoken in. They only include the words that are being spoken and are not positioned.</p>
 
