@@ -18,11 +18,11 @@
 
     <p>In this tutorial we will guide you through the process of adding subtitles and captions to HTML5 video, looking at some of the problems that currently exist, and solutions to those problems.</p>
 
-    <p>Below we will build up a simple demo. You can see the <a href="">source code</a>, and also <a href="">view it live</a>. You'll notice that the source code has different directories — these correspond to the different stages of the tutorial, allowing you to both check what your code should look like after each stage, and start the tutorial at any stage, if you don't wish to go right from the beginning.</p>
+    <p>Below we will build up a simple demo. You can see the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo">source code</a>, and also <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/demo/final/">view it live</a>. You'll notice that the source code has different directories — these correspond to the different stages of the tutorial, allowing you to both check what your code should look like after each stage, and start the tutorial at any stage, if you don't wish to go right from the beginning.</p>
 
-    <p>At this point, <a href="">download the demo code</a> so you have it available when working through the tutorial.</p>
+    <p>At this point, <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/archive/gh-pages.zip">download the content kit</a> so you have the demos code available when working through the tutorial — see the demo directory.</p>
 
-    <p>This demo purely concentrates on text tracks, therefore we've not added much in terms of CSS or additional HTML/JavaScript to get in the way. If you want to style your video up after completing the tutorial, please go ahead!</p>
+    <p>This demo purely concentrates on text tracks, therefore we've not added much in terms of CSS or additional HTML/JavaScript to get in the way. If you want to style your video page up after completing the tutorial, please go ahead!</p>
 
     <p>Note: Thanks to <a href="http://iandevlin.com/">Ian Devlin</a> for letting us use some of his code as the basis for the demo in this tutorial.</p>
 
@@ -30,7 +30,7 @@
 
     <p class="note">Note: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#5">Slide 5</a> of the slideshow.</p>
 
-    <p>Let's begin by inspecting the <a href="">start state of the demo</a>. At this point we have a simple HTML5 video in our page, and not much else:</p>
+    <p>Let's begin by inspecting the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/blob/gh-pages/demo/start/index.html">start state of the demo</a>. At this point we have a simple HTML5 video in our page, and not much else:</p>
 
 <pre><code>&lt;video controls preload="metadata"&gt;
   &lt;source src="../video/sintel-short.mp4" type="video/mp4"&gt;
@@ -80,7 +80,7 @@
 
     <p>Let's look at the contents of one of our <code>.vtt</code> (video text track) files, before we move on. HTML5 video originally used <code>.srt</code> (SubRip Text) files to provide text tracks, but these were replaced by <code>.vtt</code> because <code>.srt</code> is only really for subtitles, whereas there are lots of different types of text track you might want to use.</p>
 
-    <p>Open one of the files inside your vtt directory in a text editor. You'll see entries like this:</p>
+    <p>Open one of the files inside your code's vtt directory in a text editor. You'll see entries like this:</p>
 
 <pre><code>WEBVTT
 
@@ -110,7 +110,7 @@ It has shed much innocent blood.</code></pre>
 
     <p class="note">Note: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#16">Slide 16</a> of the slideshow.</p>
 
-    <p>Let's add some proper interactivity to our text tracks that works across browsers. You cna see the finished version of this code in the <a href="">step3</a> directory in the source code, if you need to check it out.</p>
+    <p>Let's add some proper interactivity to our text tracks that works across browsers. You can see the finished version of this code in the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/blob/gh-pages/demo/step3/index.html">step3</a> directory in the source code, if you need to check it out.</p>
 
     <p>Note: In a real project you'd probably hide the browser's default controls and create a complete custom control set, as shown in <a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Video_player_styling_basics">Video player styling basics</a>. Here however we just wanted to focus on the basics of text tracks.</p>
 
@@ -457,15 +457,15 @@ video::cue(.man) { color:yellow }</code></pre>
     <p>There are only a handful of CSS properties that can be applied to a text cue:</p>
 
     <ul>
-     <li>{{ cssxref("color") }}</li>
-     <li>{{ cssxref("opacity") }}</li>
-     <li>{{ cssxref("visibility") }}</li>
-     <li>{{ cssxref("text-decoration") }}</li>
-     <li>{{ cssxref("text-shadow") }}</li>
-     <li>{{ cssxref("background") }} shorthand properties</li>
-     <li>{{ cssxref("outline") }} shorthand properties</li>
-     <li>{{ cssxref("font") }} shorthand properties, including {{ cssxref("line-height") }}</li>
-     <li>{{ cssxref("white-space") }}</li>
+     <li><code>color</code></li>
+     <li><code>opacity</code></li>
+     <li><code>visibility</code></li>
+     <li><code>text-decoration</code></li>
+     <li><code>text-shadow</code></li>
+     <li><code>background</code> shorthand properties</li>
+     <li><code>outline</code> shorthand properties</li>
+     <li><code>font</code> shorthand properties, including <code>line-height</code></li>
+     <li><code>white-space</code></li>
     </ul>
 
     <h4>What tags are available to cues?</h4>
@@ -605,7 +605,7 @@ That's &lt;00:00:21.000&gt;amore
 
 <h2>Conclusion</h2>
 
-<p>That rounds off our tutorial on text tracks. If you look in the <a href="">final directory</a>, you'll find a slightly improved version that contains a simple JavaScript library, <a href="">captionator</a>, which adds in a JavaScripted version of the necessary APIs to allow the example to work in older browsers.</p>
+<p>That rounds off our tutorial on text tracks. If you look in the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo/final">final directory</a>, you'll find a slightly improved version that contains a simple JavaScript library, <a href="http://captionatorjs.com/">captionator</a>, which adds in a JavaScripted version of the necessary APIs to allow the example to work in older browsers.</p>
 
 
   </body>
