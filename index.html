@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
 <h1>Working with HTML5 video: Adding captions and subtitles</h1>
 
 <p>In this content kit we'll look at adding captions and subtitles (and other text track types) to HTML5 <code>&lt;video&gt;</code> using the <code>&lt;track&gt;</code> element, and look at support possibilities in legacy browsers.</p>
@@ -25,7 +26,6 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
 <p>Content kit v0.9: last significant update 13th April 2015. This content kit is published under the Mozilla Public License, version 2.0.</p>
 
 <h2>Prerequisites for the presenter</h2>
-
 
 <ul>
     <li>A Linux, Windows or Mac OSX computer.</li>
@@ -90,13 +90,13 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
 
 <p>Presenting about HTML5 video subtitles and captions is fairly simple — you just need the slides and demo materials, downloaded locally if possible so network connectivity is not a problem. Just running the presentation without a code walkthrough or workshop should take about 45 minutes.</p>
 
-<h3>If you want to include live coding, or run a workshop (completely optional)</h3>
+<h3>If you want to include coding (completely optional)</h3>
 
 <p>If you want to show a detailed code walkthrough, allow another 15-20 minutes, and follow the steps provided in <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/tutorial/">the tutorial</a>.</p>
 
-<p>If your viewers have computers available and you want them to follow along with the tutorial, allow an additional 40 minutes for experimentation and Q&amp;A/troubleshooting.</p>
+<p>If your viewers have computers available and you want them to follow along with the tutorial in a workshop type situation, allow an additional 40 minutes for experimentation and Q&amp;A/troubleshooting.</p>
 
-<p>The slides include a marker — &lt;CODE TIME&gt; — to show you where to include each step of the tutorial walkthrough. The tutorial sections include a marker — &lt;SLIDE N&gt; — to show which slide number the section corresponds to. The <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo">source code</a> has a separate directory for each stage of the tutorial/code walkthrough that shows what the code should look like at each stage.</p>
+<p>The slides include a marker — "Code time" — to show you where to include each step of the tutorial walkthrough. The tutorial sections include notes to show which slide number the section corresponds to. The <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo">source code</a> has a separate directory for each stage of the tutorial/code walkthrough that shows what the code should look like at each stage.</p>
 
 <p>To make this process as seamless as possible, you (and your attendees) should have the slides open in one browser window, the code result and tutorial open in another browser window, and the code open in your text editor. This way you can easy switch between your slides and your coding environment, if/when the time comes to do some more live coding.</p>
 
@@ -126,14 +126,10 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
 
 <h2>Frequently asked questions (FAQs)</h2>
 
-<p>
-List any questions that the presenter might get here, especially any "difficult" questions. Or link to a file of FAQs.
-</p>
-
 <dl>
   <dt>Why do we need different sources? Why can't browsers just support the same video formats?</dt>
-  <dd>Because patents and competition. Microsoft and Apple are part patent holders of the H264 video format contained in the MP4 container format. Google, Mozilla and Opera aren't, so they have direct support for the WebM format instead. You should have at least these two formats available, possibly more if you want to support older browsers. Read <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats">Media formats supported by the HTML audio and video elements</a> for exhaustive detail.</dd>
-  <dt>Why was the older (better established) SRT format dropped in favoue of WebVTT?</dt>
+  <dd>Because patents and competition. Microsoft and Apple are part patent holders of the H264 video format contained in the MP4 container format. Google, Mozilla and Opera aren't, so they have direct support for the non-patent encumbered WebM format instead. You should have at least these two formats available, possibly more if you want to support older browsers. Read <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats">Media formats supported by the HTML audio and video elements</a> for exhaustive detail.</dd>
+  <dt>Why was the older (better established) SRT format dropped in favour of WebVTT?</dt>
   <dd>Because SRT was only really for subtitles, whereas video text tracks encompass subtitles plus a wide range of other uses. In addition, WebVTT allows you to add rudimentary styling to text tracks.</dd>
   <dt>Why is JavaScript needed to reliably display captions?</dt>
   <dd>Modern browsers implement the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a> <code>textTracks</code> property that provides access to all the text tracks associated with the video, and the associated APIs that allow further manipulation of these tracks. However, default browser styling of text tracks is not very reliable, so you are advised to handle it yourself.</dd>
