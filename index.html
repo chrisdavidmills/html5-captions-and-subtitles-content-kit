@@ -11,7 +11,7 @@
 
 <h1>Working with HTML5 video: Adding captions and subtitles</h1>
 
-<p>In this content kit we'll look at adding captions and subtitles (and other text track types) to HTML5 <code>&lt;video&gt;</code> using the <code>&lt;track&gt;</code> element, and look at support possibilities in legacy browsers.</p>
+<p>In this content kit we'll teach the basics of adding captions and subtitles (and other text track types) to HTML5 <code>&lt;video&gt;</code> using the <code>&lt;track&gt;</code> element, and look at support possibilities in legacy browsers. Learners will gain new knowledge of HTML and JavaScript related to this area, and how subtitles and captions are defined and used on the Web.</p>
 
 <p>
 Technology level: HTML5 <code>&lt;video&gt;</code> is well-supported across modern browsers (going back to Internet Explorer 9); <code>&lt;track&gt;</code> is also fairly well supported (all modern browsers, going back to Internet Explorer 10).
@@ -25,17 +25,18 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
 
 <p>Content kit v0.9: last significant update 13th April 2015. This content kit is published under the Mozilla Public License, version 2.0.</p>
 
-<h2>Prerequisites for the presenter</h2>
+<h2>What should the presenter have?</h2>
 
 <ul>
     <li>A Linux, Windows or Mac OSX computer.</li>
     <li>1-3 modern browsers installed. This could include <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>, <a href="https://www.google.com/chrome/">Chrome</a>, <a href="www.opera.com/download">Opera</a>, <a href="http://www.apple.com/safari/">Safari</a>, or <a href="http://windows.microsoft.com/en-US/internet-explorer/download-ie">Internet Explorer 10+</a>.</li>
     <li>A decent text editor installed. Examples include <a href="http://www.sublimetext.com/">Sublime Text</a>, <a href="https://wiki.gnome.org/Apps/Gedit">gedit</a>, or <a href="http://notepad-plus-plus.org/">Notepad++</a>.</li>
-    <li>Intermediate to Expert HTML knowledge including HTML5 features — particularly, the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track"><code>&lt;track&gt;</code></a> elements, and HTML5 element fallbacks.</li>
-    <li>Intermediate JavaScript/DOM knowledge.</li>
 </ul>
 
-<h2>Prerequisites for the audience</h2>
+<p>It would be helpful to have a good level of HTML knowledge — including <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track"><code>&lt;track&gt;</code></a> elements, and HTML5 element fallbacks — and JavaScript/DOM knowledge.</p>
+
+
+<h2>What should the audience have?</h2>
 
 <ul>
     <li>A Linux, Windows or Mac OSX computer would be benefical to follow along with the examples, if the audience is going to be coding along with the presenter (this is optional).
@@ -44,12 +45,11 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
         <li>A decent text editor installed. Examples include <a href="http://www.sublimetext.com/">Sublime Text</a>, <a href="https://wiki.gnome.org/Apps/Gedit">gedit</a>, or <a href="http://notepad-plus-plus.org/">Notepad++</a>.</li>
       </ul>
     </li>
-    <li>Intermediate HTML knowledge, including the basics of HTML <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a>.</li>
-    <li>Basic JavaScript knowledge. You don't have to be very knowledgeable to get the most out of this content kit, but those with no JavaScript knowledge may find a couple of sections hard to grasp.</li>
+    <li>It would be helpful to have a reasonable understanding of HTML — including the basics of HTML <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code> — and JavaScript/DOM knowledge.</li>
 </ul>
 
 
-<h2>Key points</h2>
+<h2>Learning objectives</h2>
 
 <p>After you present or teach this content kit, your audience will:</p>
 
@@ -60,7 +60,7 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
   <li>Understand what other types of text track are used for.</li>
 </ul>
 
-<h2>Links to materials</h2>
+<h2>Links to resources</h2>
 
 <p>Project resources overview</p>
 
@@ -68,21 +68,21 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
         <li><a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo/final">Source code</a></li>
         <li><a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/demo/final/">Live demo</a></li>
         <li>Issue tracker/feedback: File issues against the <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit">content kit's Github repo</a></li>
-        <li><a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/">Slides for presenting on the subject</a>.</li>
+        <li><a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/">Slides for presenting on the subject</a></li>
     </ul>
 
 <p>Supporting docs/references</p>
 
     <ul>
-        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">The <code>&lt;video&gt;</code> element</a>.</li>
-        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track">The <code>&lt;track&gt;</code> element</a>.</li>
-        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Video_Text_Tracks_Format">The WebVTT format</a>.</li>
-        <li>Article: <a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video">Adding captions and subtitles to HTML5 video</a>.</li>
+        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">The <code>&lt;video&gt;</code> element</a></li>
+        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track">The <code>&lt;track&gt;</code> element</a></li>
+        <li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Video_Text_Tracks_Format">The WebVTT format</a></li>
+        <li>Article: <a href="https://developer.mozilla.org/en-US/Apps/Build/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video">Adding captions and subtitles to HTML5 video</a></li>
         <li><a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/tutorial/">Tutorial for building up demo</a> included in content kit</li>
     </ul>
 
 
-<h2>Presentation setup and materials</h2>
+<h2>Presentation setup</h2>
 
 <ul>
   <li><a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/">Link to slides</a></li>
@@ -91,17 +91,7 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
 
 <p>Presenting about HTML5 video subtitles and captions is fairly simple — you just need the slides and demo materials, downloaded locally if possible so network connectivity is not a problem. Just running the presentation without a code walkthrough or workshop should take about 45 minutes.</p>
 
-<h3>If you want to include coding (completely optional)</h3>
-
-<p>If you want to show a detailed code walkthrough, allow another 15-20 minutes, and follow the steps provided in <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/tutorial/">the tutorial</a>.</p>
-
-<p>If your viewers have computers available and you want them to follow along with the tutorial in a workshop type situation, allow an additional 40 minutes for experimentation and Q&amp;A/troubleshooting.</p>
-
-<p>The slides include a marker — "Code time" — to show you where to include each step of the tutorial walkthrough. The tutorial sections include notes to show which slide number the section corresponds to. The <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo">source code</a> has a separate directory for each stage of the tutorial/code walkthrough that shows what the code should look like at each stage.</p>
-
-<p>To make this process as seamless as possible, you (and your attendees) should have the slides open in one browser window, the code result and tutorial open in another browser window, and the code open in your text editor. This way you can easy switch between your slides and your coding environment, if/when the time comes to do some more live coding.</p>
-
-<h2>Demo setup and materials</h2>
+<h2>Demo setup</h2>
 
 <ul>
   <li>Link to demo</li>
@@ -124,6 +114,17 @@ Please file any issues you find against <a href="https://github.com/chrisdavidmi
   </li>
 </ul>
 
+<h2>Active learning</h2>
+
+<p>The slides include a marker — starting with "Code time" — that links through to the relevant code version at each point. These are good places to present the demo!</p>
+
+<p>At these points you should click the link (and get any audience members that are following along with their own computers to do the same), and then have a short pause to allow everyone to have a play with the code and see what's happening for themselves. to show you where to include each step of the tutorial walkthrough. The tutorial sections include notes to show which slide number the section corresponds to. The <a href="https://github.com/chrisdavidmills/html5-captions-and-subtitles-content-kit/tree/gh-pages/demo">source code</a> has a separate directory for each stage of the tutorial/code walkthrough that shows what the code should look like at each stage.</p>
+
+<p>If you want to show a detailed code walkthrough, allow another 15-20 minutes, and follow the steps provided in <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/tutorial/">the tutorial</a>.</p>
+
+<p>If your viewers have computers available and you want them to follow along with the tutorial in a workshop type situation, allow an additional 40 minutes for experimentation and Q&amp;A/troubleshooting. At the end of this session it is a good idea to have a "sharing" session so that the audience can share anything interesting they've created, give each other feedback, and ask questions.</p>
+
+<p>To make this process as seamless as possible, you (and your attendees) should have the slides open in one browser window, the code result and tutorial open in another browser window, and the code open in your text editor. This way you can easy switch between your slides and your coding environment, if/when the time comes to do some more live coding.</p>
 
 <h2>Frequently asked questions (FAQs)</h2>
 
