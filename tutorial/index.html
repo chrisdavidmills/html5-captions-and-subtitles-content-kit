@@ -213,11 +213,13 @@ select.addEventListener('change',function() {
 
     <p>Save your code and try it out again.</p>
 
-    <h2 id="step4">Step 4: captions versus subtitles</h2>
+    <h2 id="step4">Step 4: captions versus subtitles, and default selection</h2>
 
     <p class="note"><strong>Note</strong>: This section relates to <a href="http://chrisdavidmills.github.io/html5-captions-and-subtitles-content-kit/slides/?full#26">Slide 26</a> of the slideshow.</p>
 
     <p>So far we have only added subtitles to our video, but we should keep in mind that there are other types of text tracks to consider. Subtitles are generally for the use of people who can hear the audio dialog, but can't understand the language it is spoken in. They only include the words that are being spoken and are not positioned.</p>
+
+    <h3>Captions</h3>
 
     <p>Captions on the other hand are generally for the use of people who are deaf or hard of hearing. They tend to include information on who is speaking each line of dialog, and the lines are often positioned near to the character to further aid recogition of this. In addition, captions tend to include information to describe any music that plays, sound effects that occur, etc.</p>
 
@@ -226,6 +228,25 @@ select.addEventListener('change',function() {
 <pre><code>&lt;track label="English" kind="captions" srclang="en" src="vtt/sintel-captions-en.vtt"&gt;</code></pre>
 
     <p>Now try refreshing your example — you should now have a fourth option in your select menu — English captions. Choose this one and observe how it differs from the English subtitles.</p>
+
+    <h3>Adding a default selection</h3>
+
+    <p>Instead of having no subtitles selected by default, it might be nice to have the English subtitles selected by default; this is pretty easy to achieve. In the for loop that populates the select menu, add the following highlighted block:</p>
+
+    <pre><code>for (var i = 0; i < video.textTracks.length; i++) {
+      var curTrack = video.textTracks[i];
+      var addTrackOpt = document.createElement('option');
+      addTrackOpt.setAttribute('value',curTrack.kind + '-' + curTrack.language);
+      addTrackOpt.textContent = curTrack.label + ' ' + curTrack.kind;
+      select.appendChild(addTrackOpt);
+
+      <strong>if(curTrack.language === 'en' && curTrack.kind === 'subtitles') {
+        addTrackOpt.setAttribute('selected','selected');
+        trackChange(select.value);
+      }</strong>
+    }</code></pre>
+
+    <p>Here, we check whether the language is English and the track kind is "subtitles". If they both return true, we set the <code>selected</code> attribute on that particular <code>&lt;option&gt;</code> element, and run the <code>trackChange</code> function to set the English subtitles to play by default.</p>
 
     <h3>Cue Settings</h3>
 

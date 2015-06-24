@@ -77,6 +77,11 @@
       addTrackOpt.setAttribute('value',curTrack.kind + '-' + curTrack.language);
       addTrackOpt.textContent = curTrack.label + ' ' + curTrack.kind;
       select.appendChild(addTrackOpt);
+
+      if(curTrack.language === 'en' && curTrack.kind === 'subtitles') {
+        addTrackOpt.setAttribute('selected','selected');
+        trackChange(select.value);
+      }
     }
 
     select.addEventListener('change',function() {
